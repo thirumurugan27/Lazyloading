@@ -1,0 +1,32 @@
+main{
+    
+    place-items: center;
+}
+
+main li{
+    padding: 5px;
+    list-style: none;
+    
+    
+}
+.deletebutton{
+    size: 50%; 
+    padding: 0;
+    margin-left: 3px;  
+}
+.deletebutton:hover
+{
+    color: red;
+    outline: 0;
+    
+}
+.edit
+{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.edit:hover
+{
+    outline: 0;
+    color: rgb(83, 255, 83);
+}
