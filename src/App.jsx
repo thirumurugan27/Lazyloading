@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/Lazyloading">
         <NavBar />
         <Routes>
           <Route path="/home" element={<Home/>} />
