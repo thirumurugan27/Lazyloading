@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import './ProductList.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
@@ -8,7 +9,7 @@ const ProductList = () => {
   let [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch("http://localhost:4000/products", { method: "GET" })
+    fetch("https://fakestoreapi.com/products", { method: "GET" })
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -20,13 +21,12 @@ const ProductList = () => {
   }, [])
 
   return (
-    <div>
-      <h1>ProductList</h1>
+    <div className='whole'> 
       {error && <p>Error: {error}</p>}
-      <div>
+      <div className="product-list">
         {
           products.map(product => (
-            <Card key={product.id} style={{ width: '18rem' }}>
+            <Card key={product.id} style={{ width: '18rem' }} className='productcard'>
               <Card.Img variant="top" src={product.image} />
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>

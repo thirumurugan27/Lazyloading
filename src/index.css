@@ -30,3 +30,8 @@ main li{
     outline: 0;
     color: rgb(83, 255, 83);
 }
+.load
+{
+    text-align: center;
+    font-size: 500%;
+}

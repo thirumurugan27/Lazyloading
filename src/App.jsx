@@ -1,36 +1,39 @@
-import Todolist from "./Todolist"
-import Login from "./Login"
-import Home from "./Home"
 import NavBar from "./Navbar"
-import { BrowserRouter ,Routes,Route,Link} from "react-router-dom"
-import Products from "./Products"
-import ProductList from "./ProductList"
+import Home from "./Home"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import ProductDetails from "./ProductDetails"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { lazy, Suspense } from "react"
+
 function App() {
- 
+  const LazyProductlist = lazy(() => import('./ProductList'))
+
+  const LazyLogin = lazy(() => import('./Login'))
+  const LazyTodolist = lazy(() => import('./Todolist'))
+
   let user = "Larry"
 
   return (
     <>
-        
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/home" element={<Home/>} />
 
-        
-        <BrowserRouter>
-          <NavBar/>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login/:newuser" element={<Login />} />
-            <Route path="/products" element={<Products />} >
-              <Route index element={<ProductList/>}/>
-              <Route path="list" element={<ProductList />} />
-              <Route path="details" element={<ProductDetails />} />
-            </Route>
+          <Route path="/login/:newuser" element={<Suspense fallback={<div className="load"><p>Loading...</p></div>}>
+            <LazyLogin />
+          </Suspense>} />
 
-            <Route path="/todolist" element={<Todolist />} />
-          </Routes>
-        </BrowserRouter>
-      
+          <Route path="/" element={<Suspense fallback={<div className="load"><p>Loading...</p></div>}>
+            <LazyProductlist />
+          </Suspense>} />
+
+          <Route path="details" element={<ProductDetails />} />
+          <Route path="/todolist" element={<Suspense fallback={<div className="load"><p>Loading...</p></div>}>
+            <LazyTodolist />
+          </Suspense>} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

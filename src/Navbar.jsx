@@ -17,9 +17,9 @@ function NavBar() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/home">Home</Nav.Link>
             <Nav.Link as={Link} to="/login/Spongeboob">Login</Nav.Link>
-            <Nav.Link as={Link} to="/products">Products</Nav.Link>
+            <Nav.Link as={Link} to="/">Products</Nav.Link>
             <Nav.Link as={Link} to="/todolist">TodolistApp</Nav.Link>
           </Nav>
           <Form className="d-flex">
